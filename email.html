@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="style.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript">
+
+            function checkall(ch){
+                debugger;
+                var In = document.getElementById("Inbox");
+                var m1=In.getElementsByTagName("table")[0];
+                
+                var m3=m1.getElementsByTagName("input");
+                for(i=0;i<m3.length;i++){
+                    if (ch.checked==true){
+                        m3[i].checked=true;
+                    }
+                    else{
+                        m3[i].checked=false;
+                    }
+                }
+            }
+            
+            function delete1(){
+                var Div2= document.getElementById("Inbox");
+                var Div3= Div2.getElementsByTagName("table")[0];
+                var Div6=Div3.getElementsByTagName("input");
+                for(var i=0 ;i<Div6.length;i++){
+                    if (Div6[i].checked==true ){
+                       var tr= Div6[i].parentNode.parentNode
+                       var tab=tr.parentNode
+                       tab.removeChild(tr)
+                    }
+                }
+            }
+            function Remove1(){
+                var In = document.getElementById("Inbox");
+                var table1=In.getElementsByTagName("table")[0];
+                var input1= table1.getElementsByTagName("input");
+                for(i=0;i<input1.length;i++){
+                    if (input1[i].checked==true){
+                        var tr1=input1[i].parentNode.parentNode
+                        tr1.removeAttribute("class")
+                    }
+                }
+            }
+            function compose(){
+                var compose1= document.getElementById("SendEmail");
+                compose1.style.display="block";
+                var inb = document.getElementById("Inbox");
+                inb.style.display="none";
+                var sm = document.getElementById("SentMail");
+                sm.style.display="none";
+            }
+            function inboxx(){
+                var compose1= document.getElementById("SendEmail");
+                compose1.style.display="none";
+                var inb = document.getElementById("Inbox");
+                inb.style.display="block";
+                var sm = document.getElementById("SentMail");
+                sm.style.display="none";
+            }
+            function sentmail(){
+                var compose1= document.getElementById("SendEmail");
+                compose1.style.display="none";
+                var inb = document.getElementById("Inbox");
+                inb.style.display="none";
+                var sm = document.getElementById("SentMail");
+                sm.style.display="block";
+            }
+            function tdd(t11){
+                debugger;
+                var t111= t11.parentNode;
+                t111.removeAttribute("class");
+                }
+            function trr(thh){
+                var imgg=thh.getElementsByClassName("emailAction")[0];
+                imgg.style.display="block";
+            }
+            function tr22(th2){
+                var imgg=th2.getElementsByClassName("emailAction")[0];
+                imgg.style.display="none";
+            }
+            function unreadset(ti){
+                var ti1=ti.parentNode.parentNode.parentNode;
+                ti1.setAttribute("class","Unread");
+
+            }
+            function delete2(ti0){
+                var ti2=ti0.parentNode.parentNode.parentNode;
+                var ti3 =ti2.parentNode;
+                ti3.removeChild(ti2);
+
+            }
+            function add(){
+                debugger;
+                var tr1=document.createElement("tr");
+                var td0=document.createElement("td");
+                tr1.appendChild(td0);
+                var inpo=document.createElement("input");
+                inpo.setAttribute("type","checkbox");
+                td0.appendChild(inpo);
+                var td1=document.createElement("td");
+                tr1.appendChild(td1);
+                var textvalue1 = document.getElementById("txtTo").value;
+                var tdValue = document.createTextNode(textvalue1);
+                td1.appendChild(tdValue);
+                var td2=document.createElement("td");
+                tr1.appendChild(td2);
+                var textvalue2 = document.getElementById("txtSubject").value;
+                var tdValue2 = document.createTextNode(textvalue2);
+                td2.appendChild(tdValue2);
+                var td30 = new Date();
+                var td31=td30.toDateString(); 
+                var td3=document.createElement("td");
+                var td3Value=document.createTextNode(td31);
+                td3.appendChild(td3Value);
+                tr1.appendChild(td3);
+                var table1=document.getElementById("tblSent");
+                table1.appendChild(tr1);
+            }
+            function delete3(){
+                var Div2= document.getElementById("SentMail");
+                var Div3= Div2.getElementsByTagName("table")[0];
+                var Div6=Div3.getElementsByTagName("input");
+                for(var i=0 ;i<Div6.length;i++){
+                    if (Div6[i].checked==true ){
+                       var tr= Div6[i].parentNode.parentNode
+                       var tab=tr.parentNode
+                       tab.removeChild(tr)
+                    }
+                }
+            }
+            function checkall2(ch){
+                var In = document.getElementById("SentMail");
+                var m1=In.getElementsByTagName("table")[0];
+                var m3=m1.getElementsByTagName("input");
+                for(i=0;i<m3.length;i++){
+                    if (ch.checked==true){
+                        m3[i].checked=true;
+                    }
+                    else{
+                        m3[i].checked=false;
+                    }
+                }
+            }
+        </script>
+
+
+    </head>
+    <body>
+        <div class="ContainerBox">
+        <div class="menuBox">
+            <div class="HeaderLeftSide">
+                <div class="HeaderimgBox">
+                    <img src="avatar1.png" style="width: 60px;" />
+                </div>
+                <div class="HeaderInfoBox">
+                    <h5>Jonathan Smith</h5>
+                    <span>jsmith@gmail.com</span>
+
+                </div>
+
+            </div>
+            <div class="ComposeBox">
+                <button class="btn ComposeButton" onclick="compose()">compose</button>
+            </div>
+            <div class="MenuItemBox">
+                <div class="menueItem active" id="InboxMenu">
+                <span onclick="inboxx()">
+                    Inbox
+                </span>
+            </div>
+            <div class="menueItem" id="SentMenu">
+                <span onclick="sentmail()">  
+                    Sent Mail
+                </span>
+            </div>
+            </div>
+        </div>
+        <div class="ContentBox">
+            <div class="HeaderRightSide">
+                <h3>Inbox</h3>
+            </div>
+            <div id="Inbox" class="Container">
+            <div class="ActionContainer">
+                <div class="ActionsBox">
+                    <input type="checkbox" onclick="checkall(this)" />All
+                </div>
+                <div class="ActionsBox" >
+                    <img src="delete.png" class="ActionIcons" onclick="delete1()" />
+                </div>
+                <div class="ActionsBox">
+                    <img src="mark_read.png" class="ActionIcons" onclick="remove1()" />
+                </div>
+            </div>
+            <div class="MailBox">
+                <table>
+                    <colgroup style="width: 10%;"/>
+                    <colgroup style="width: 30%;"/>
+                    <colgroup style="width: 10%;"/>
+                    <colgroup style="width: 30%;"/>
+                    <colgroup style="width: 20%;"/>
+                    <tr class="Unread" onmouseover="trr(this)" onmouseout="tr22(this)">
+                        <td>
+                            <input type="checkbox"/>
+                        </td>
+                        <td onclick="tdd(this)">
+                            JKribo@gmail.com
+                        </td>
+                        <td>
+                            <div class="emailAction" style="display: none;">
+                            <img src="delete.png" class="ActionIcons" onclick="delete2(this)" />
+                            <img src="mark_unread.png" class="ActionIcons" onclick="unreadset(this)" />
+                        </div>
+                        </td>
+                        <td >
+                            JavaScript Task
+                        </td>
+                        <td onclick="tdd(this)">
+                            Sat Sep 04 2021
+                        </td>
+
+                    </tr>
+                    <tr class="Unread"  onmouseover="trr(this)" onmouseleave="tr22(this)">
+                        <td>
+                            <input type="checkbox"/>
+                        </td>
+                        <td onclick="tdd(this)">
+                            JKribo@gmail.com
+                        </td>
+                        <td>
+                            <div class="emailAction" style="display: none;">
+                            <img src="delete.png" class="ActionIcons" onclick="delete2(this)" />
+                            <img src="mark_unread.png" class="ActionIcons" onclick="unreadset(this)" />
+                        </div>
+                        </td>
+                        <td onclick="tdd(this)">
+                            JavaScript Task#2
+                        </td>
+                        <td onclick="tdd(this)">
+                            Sat Sep 05 2021
+                        </td>
+
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+        <div id="SendEmail" class="Container" style="display: none;">
+            <div class="InputBoxes">
+                <span style="margin-right: 50px;">To:</span>
+                <input type="text" placeholder="Type Email" id="txtTo" />
+            </div>
+            <div class="InputBoxes">
+                <span>Subject:</span>
+                <input type="text" placeholder="Type Subject" id="txtSubject" />
+            </div>
+            <div class="InputBoxes textareaBox">
+                <textarea id="txtBody"></textarea>
+            </div>
+            <div class="actionBar">
+                <div class="SaveChangesBox">
+                    <button class="btn ButtonSubmit" onclick="add()" >Send</button>
+                </div>
+                <div class="CancelBox">
+                    <button class="btn btn-default"  >Cancel</button>
+                </div>
+            </div>
+        </div>
+        <div id="SentMail" class="Container" style="display: none;">
+            <div class="ActionContainer">
+                <div class="ActionsBox">
+                    <input type="checkbox"  onclick="checkall2(this)"/>All
+                </div>
+                <div class="ActionsBox">
+                    <img src="delete.png" class="ActionIcons"  onclick="delete3()"/>
+                </div>
+            </div>
+            <div class="MailBox">
+                <table id="tblSent">
+                    <colgroup style="width: 10%;"/>
+                    <colgroup style="width: 35%;"/>
+                    <colgroup style="width: 35%;"/>
+                    <colgroup style="width: 20%;"/>
+			<tr>
+                        <td>
+                            <input type="checkbox"/>
+                        </td>
+                        <td >
+                            JKribo@gmail.com
+                        </td>
+                        <td>
+                            JavaScript Task#1
+                        </td>
+                        <td>
+                            Sat Sep 04 2021
+                        </td>
+
+                    </tr>
+                   
+                </table>
+
+            </div>
+        </div>
+
+        </div>
+    </div>
+    </body>
+</html>
